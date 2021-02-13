@@ -281,7 +281,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/banner.png',
+                    'path' => 'banners/banner5.jpg',
                     'imageable_id' => '1',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
@@ -289,7 +289,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/banner2.png',
+                    'path' => 'banners/banner6.jpg',
                     'imageable_id' => '2',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
@@ -297,7 +297,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/banner3.jpg',
+                    'path' => 'banners/banner7.jpg',
                     'imageable_id' => '3',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
@@ -305,7 +305,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/banner4.png',
+                    'path' => 'banners/banner10.jpg',
                     'imageable_id' => '4',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
@@ -313,7 +313,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/smallBanner.png',
+                    'path' => 'banners/banner11.jpg',
                     'imageable_id' => '5',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
@@ -321,8 +321,16 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'banners/smallBanner2.png',
+                    'path' => 'banners/banner8.jpg',
                     'imageable_id' => '6',
+                    'imageable_type' => 'App\Models\Banner',
+                    'thumbnail' => false,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'path' => 'banners/banner9.jpg',
+                    'imageable_id' => '7',
                     'imageable_type' => 'App\Models\Banner',
                     'thumbnail' => false,
                     'created_at' => now(),

@@ -63,7 +63,6 @@ class ProductController extends Controller
                 'created_at' => now()->timezone('Asia/Jakarta'),
                 'updated_at' => now()->timezone('Asia/Jakarta'),
             ]);
-            echo $category_item;
         }
 
         return response()->successWithKey(new ListResource($product), 'product');

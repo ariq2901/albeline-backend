@@ -37,6 +37,11 @@ class BannerSeeder extends Seeder
                     "updated_at" => now(),
                 ],
                 [
+                    "big_banner" => true,
+                    "created_at" => now(),
+                    "updated_at" => now(),
+                ],
+                [
                     "big_banner" => false,
                     "created_at" => now(),
                     "updated_at" => now(),

@@ -17,6 +17,7 @@ class StoreSeeder extends Seeder
             [
                 [
                     'name' => 'Albeline Official',
+                    'city_id' => 154,
                     'user_id' => rand(1, 18),
                     'created_at' => now(),
                     'updated_at' => now(),

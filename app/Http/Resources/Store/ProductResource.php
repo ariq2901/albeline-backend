@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Store;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CartResource extends JsonResource
+class ProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,9 @@ class CartResource extends JsonResource
     public function toArray($request)
     {
         $products = ListResource::collection($this->products);
-
         return [
-            'user' => new UserResource($this->user),
-            'products' => $products,
+            'total' => count($products),
+            'products' => $products
         ];
     }
 }

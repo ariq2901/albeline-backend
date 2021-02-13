@@ -110,5 +110,19 @@ class ImageController extends Controller
 			return response()->error("tidak ada tipe banner dengan nama tersebut");
 		}
 		
-	}
+    }
+    
+    public function uploadDemo(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $finalName = date('His') . $fileName;
+            
+            $request->file('image')->storeAs('images/', $finalName, 'public');
+            return response()->json(["message" => "Success upload image"]);
+        } else {
+            return response()->error("Failed upload image");
+        }
+    }
 }

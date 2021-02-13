@@ -37,5 +37,10 @@ class Product extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
     
 }

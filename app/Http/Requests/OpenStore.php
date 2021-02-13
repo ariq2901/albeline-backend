@@ -25,6 +25,7 @@ class OpenStore extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
+            'city_id' => 'required|integer',
         ];
     }
 }

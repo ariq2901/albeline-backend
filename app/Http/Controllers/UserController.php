@@ -121,8 +121,14 @@ class UserController extends Controller
             $user = User::create($input);
             
             $user->assignRole('pembeli');
-
+            
+            //? Register Cart
+            $user->cart()->create(['user_id' => $user->id]);
+            
+            //? Fire an Email Verification to email
             event(new Registered($user));
+
+            //? Create Avatar Image
             $avatar = Avatar::create($user->username)->getImageObject()->encode('png');
             Storage::put('public/images/avatars/' . $user->id . '/avatar.png', (string) $avatar);
             $user->image()->create(['path' => "avatars/$user->id/avatar.png", 'thumbnail' => true]);
@@ -148,6 +154,11 @@ class UserController extends Controller
             $user = User::create($input);
             
             $user->assignRole('pembeli');
+
+            //? Register Cart
+            $user->cart()->create(['user_id', $user->id]);
+            
+            //? Create Avatar Image
             $avatar = Avatar::create($user->username)->getImageObject()->encode('png');
             Storage::put('public/images/avatars/' . $user->id . '/avatar.png', (string) $avatar);
             $user->image()->create(['path' => "avatars/$user->id/avatar.png", 'thumbnail' => true]);
@@ -165,6 +176,7 @@ class UserController extends Controller
         } catch(\Throwable $th) {
             return response()->error('Failed to logout', StatusCode::INTERNAL_SERVER_ERROR);
         }
+        return response()->successWithMessage("Success to Logout");
     }
 
     public function userDetail(Request $request)

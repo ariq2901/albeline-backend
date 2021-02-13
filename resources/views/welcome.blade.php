@@ -21,34 +21,35 @@
             .w-100 {
                 width: 100%;
             }
-            .border-biru {
-                border-left: 4px solid #26D3FF;
+            .salmon {
+                color: #f65c78;
             }
 
             .biru {
                 fill: #26D3FF;
             }
-
             .salmon {
                 fill: #f65c78;
             }
-
             .green {
                 fill: #42e6a4;
             }
-
             .violet {
                 fill: #9326FF
             }
-
             .sea {
                 fill: #0278ae;
             }
-
             .orange {
                 fill: #ffb516;
             }
+            .pink {
+                fill: #fc06cb;
+            }
 
+            .border-biru {
+                border-left: 4px solid #26D3FF;
+            }
             .border-salmon {
                 border-left: 4px solid #f65c78;
             }
@@ -61,11 +62,11 @@
             .border-sea {
                 border-left: 4px solid #0278ae;
             }
-            .salmon {
-                color: #f65c78;
-            }
             .border-orange {
                 border-left: 4px solid #ffb516;
+            }
+            .border-pink {
+                border-left: 4px solid #fc06cb;
             }
         </style>
     </head>
@@ -83,8 +84,8 @@
                 </div>
 
                 <div class="flex mt-8" style="width: 100%; justify-content: space-between; align-items: center">
-                    <h1>Authentication</h1>
-                    <span style="margin-top: 10px"><span class="salmon">*</span> Jika Edit/Update, Semua field bersifat <span class="text-gray-900 font-semibold dark:text-white"> Optional.</span></span>
+                    <h1 class="text-gray-900 font-semibold dark:text-white">Authentication</h1>
+                    <span style="margin-top: 10px"><span class="salmon">*</span> <span class="text-gray-900 font-semibold dark:text-white">Jika Edit/Update, Semua field bersifat <strong>Optional</strong>.</span></span>
                 </div>
 
                 <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
@@ -259,7 +260,7 @@
                     </div>
                 </div>
 
-                <h1>Store</h1>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Store</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="border-violet">
@@ -308,7 +309,8 @@
                                 <div class="mt-2 text-gray-600 dark:text-gray-400">
                                     <span class="font-semibold">Body</span>
                                     <ul style="margin: 0">
-                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "name" : string }</li>
+                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "name" : string, "city_id" : integer }</li>
+                                        <span style="margin-top: 10px"><span class="salmon">*</span> untuk referensi value dari city_id diambil berdasarkan id kota yang berada di API Raja Ongkir</span><br>
                                     </ul>
                                 </div>
                             </div>
@@ -364,7 +366,7 @@
                     </div>
                 </div>
 
-                <h1>Image</h1>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Image</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="border-green">
@@ -411,7 +413,7 @@
                     </div>
                 </div>
 
-                <h1>Category</h1>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Category</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="border-orange">
@@ -528,7 +530,7 @@
                     </div>
                 </div>
 
-                <h1>Product</h1>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Product</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="border-sea">
@@ -545,7 +547,7 @@
                                     GET
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/product
+                                    /api/products
                                 </div>
                             </div>
                         </div>
@@ -725,7 +727,7 @@
                     </div>
                 </div>
 
-                <h1>Filter / Search</h1>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Filter / Search</h1>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="border-sea">
@@ -758,206 +760,103 @@
                     </div>
                 </div>
 
-                {{-- <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="violet">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#9326FF"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">List Approval</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #f0259f">Teacher ,</span> <span style="color: #f05454">Musyrif</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    GET
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/list-approval/{approver}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                        <span style="margin-top: 10px"><span class="salmon">*</span> parameter approver : <span class="text-gray-900 font-semibold dark:text-white"> teacher ,</span> <span class="text-gray-900 font-semibold dark:text-white">musyrif</span></span><br>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="violet">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#9326FF"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Get Approval by ID</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #f0259f">Teacher ,</span> <span style="color: #f05454">Musyrif</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    GET
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/show-approval/{id}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="violet">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#9326FF"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Approvement accepted/declined</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #f0259f">Teacher ,</span> <span style="color: #f05454">Musyrif</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    POST
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/approvement/{id}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                    </ul>
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Body</span>
-                                    <ul style="margin: 0">
-                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "approved" : boolean, "reason": string }</li><hr>
-                                        <span style="margin-top: 10px"><span class="salmon">*</span> untuk memberikan <span class="text-gray-900 font-semibold dark:text-white"> persetujuan</span> disetujui / ditolak</span><br>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="sea">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#0278ae"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Assignment / setor tugas</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #0278ae">Student</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    POST
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/assignment/{borrowingId}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                    </ul>
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Body</span>
-                                    <ul style="margin: 0">
-                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "description" : string, "image": FILE }</li><hr>
-                                        <span style="margin-top: 10px"><span class="salmon">*</span> untuk mengupload <span class="text-gray-900 font-semibold dark:text-white"> tugas</span> yang sudah dikerjakan</span><br>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- Route::get('/show-assignment/{id}', 'App\Http\Controllers\TeacherController@showAssignment'); --}}
-                {{-- <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="violet">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#9326FF"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Show Assignment By ID</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #f0259f">Teacher ,</span> <span style="color: #f05454">Musyrif</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    GET
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /api/show-assignment/{id}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="violet">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" fill="#9326FF"/></svg>
-                                <div class="flex" style="width: 100%; justify-content: space-between">
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Pass Assignment (Diterima / Bermasalah)</span></div>
-                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #f0259f">Teacher ,</span> <span style="color: #f05454">Musyrif</span></div>
-                                </div>
-                            </div>
-                            <div class="ml-12">
-                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
-                                    POST
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    /pass-assignment/{assignment_id}
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Headers</span>
-                                    <ul style="margin: 0">
-                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
-                                    </ul>
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400">
-                                    <span class="font-semibold">Body</span>
-                                    <ul style="margin: 0">
-                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "status" : boolean }</li><hr>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+                <h1 class="text-gray-900 font-semibold dark:text-white">Cart System</h1>
 
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="border-pink">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" class="pink"/></svg>
+                                <div class="flex" style="width: 100%; justify-content: space-between">
+                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Get User Cart</span></div>
+                                    {{-- <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #0278ae">Student</span></div> --}}
+                                </div>
+                            </div>
                             <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
+                                    GET
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    /api/get-cart
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Headers</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="border-pink">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" class="pink"/></svg>
+                                <div class="flex" style="width: 100%; justify-content: space-between">
+                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Add Product to Cart</span></div>
+                                    {{-- <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #0278ae">Student</span></div> --}}
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
+                                    POST
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    /api/update-cart
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Headers</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Body</span>
+                                    <ul style="margin: 0">
+                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "product_id" : [product_id] }</li><hr>
+                                        <span style="margin-top: 10px"><span class="salmon">*</span> field product_id bersifat <span class="text-gray-900 font-semibold dark:text-white">Array</span><span> integer</span><br>
+                                        <span style="margin-top: 10px"><span class="salmon">*</span> contoh <span class="text-gray-900 font-semibold dark:text-white">"product_id": [1]</span> atau </span><span class="text-gray-900 font-semibold dark:text-white">"product_id": [1, 3, 6]</span></span><br>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="border-pink">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" class="pink"/></svg>
+                                <div class="flex" style="width: 100%; justify-content: space-between">
+                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Remove Product from Cart</span></div>
+                                    {{-- <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: #0278ae">Student</span></div> --}}
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
+                                    POST
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    /api/remove-cart
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Headers</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Body</span>
+                                    <ul style="margin: 0">
+                                        <li><span class=" font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "product_id" : integer }</li><hr>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">

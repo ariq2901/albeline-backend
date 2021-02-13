@@ -19,7 +19,7 @@ class ProductSearch
 		if ($filters->has('name')) {
 			$name = $filters->input('name');
 
-			$product->where('name', 'ilike', "%$name%");
+			$product->where('name', 'like', "%$name%");
 		}
 
 		//^ Search by condition
@@ -48,8 +48,8 @@ class ProductSearch
 		// }
 
 		if ($filters->has('price')) {
-			$product->where('price', $filters->input('price')['min'] ?? '');
-			$product->where('price', $filters->input('price')['max'] ?? '');
+			$product->where('price', '>=' , (int) $filters->input('price')['min'] ?? '');
+			$product->where('price', '<=' , (int) $filters->input('price')['max'] ?? '');
 		}
 
 		// if ($filters->has('rating')) {

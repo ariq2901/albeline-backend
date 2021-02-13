@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImageProduct extends FormRequest
+class AddCart extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ImageProduct extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|mimes:jpeg,jpg,jfif,png,webp|max:10000' //? 10000kb
+            'product_id' => 'required'
         ];
     }
 }

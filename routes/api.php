@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('upload-image', [ImageController::class, 'uploadDemo']);
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index');
 Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show');
@@ -41,9 +44,12 @@ Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
 
 //^ Store
 Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
-    Route::post('/open-store', 'App\Http\Controllers\SellerController@openStore');
+    Route::post('/open-store', 'App\Http\Controllers\StoreController@openStore');
     Route::put('/update-store/{id}', 'App\Http\Controllers\StoreController@update');
     Route::delete('/delete-store/{id}', 'App\Http\Controllers\StoreController@delete');
+    Route::get('/store-reviews', 'App\Http\Controllers\StoreController@getRating');
+    Route::get('/check-store', 'App\Http\Controllers\StoreController@checkStore');
+    Route::get('/store-products', 'App\Http\Controllers\StoreController@getProducts');
 });
 
 //^ Product
@@ -59,4 +65,11 @@ Route::group(['middleware' => ['auth:api', 'role:admin']], function() {
     Route::post('/create-category', 'App\Http\Controllers\CategoryController@store');
     Route::post('/update-category/{id}', 'App\Http\Controllers\CategoryController@update');
     Route::delete('/delete-category/{id}', 'App\Http\Controllers\CategoryController@destroy');
+});
+
+//^ Buyer
+Route::group(['middleware' => ['auth:api', 'CheckVerified']], function() {
+    Route::get('/get-cart', 'App\Http\Controllers\BuyerController@getCart');
+    Route::post('/update-cart', 'App\Http\Controllers\BuyerController@addCart');
+    Route::post('/remove-cart', 'App\Http\Controllers\BuyerController@removeCart');
 });
