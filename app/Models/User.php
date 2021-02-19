@@ -19,17 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'username',
-        'profile',
-        'gender',
-        'dob',
-        'address',
-        'email',
-        'hp',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     public function sendEmailVerificationNotification()
     {
@@ -54,6 +44,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function store()
     {
         return $this->hasOne(Store::class);
+    }
+
+    public function checkouts()
+    {
+        return $this->hasMany(Checkout::class);
     }
 
     public function image()

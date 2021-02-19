@@ -19,5 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('product', ProductController::class);
-Route::resource('category', CategoryController::class);
+Route::get('/checkout-view', function () {
+    return view('checkout');
+});
+

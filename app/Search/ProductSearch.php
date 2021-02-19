@@ -19,7 +19,7 @@ class ProductSearch
 		if ($filters->has('name')) {
 			$name = $filters->input('name');
 
-			$product->where('name', 'like', "%$name%");
+			$product->where('name', 'ilike', "%$name%");
 		}
 
 		//^ Search by condition

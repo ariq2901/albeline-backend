@@ -31,7 +31,7 @@ class ListResource extends JsonResource
             'images' => $images,
             'sold' => $this->sold,
             'price' => $this->price,
-            'quantity' => $this->qty,
+            'stock' => $this->stock,
             'desc' => $this->desc,
         ];
     }

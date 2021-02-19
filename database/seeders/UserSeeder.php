@@ -67,6 +67,7 @@ class UserSeeder extends Seeder
                 'username' => strtolower($username[0]) . strtolower($username[1]) . '123',
                 'profile' => 'An enthusiastic boy who had unlimited money',
                 'gender' => 'Male',
+                'city_id' => 151,
                 'dob' => date("Y-m-d", $int),
                 'address' => '1021 Redihi Way',
                 'hp' => '(781) 271-5814',

@@ -19,6 +19,7 @@ class ListResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'amount' => $this->amount,
             'image' => ImageResource::collection($this->images->where('thumbnail', true)),
             'price' => $this->price,
             'store' => $this->store->name,

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use App\Http\Resources\ListCollection;
 use App\Http\Resources\ListResource;
 use App\Http\Resources\ProductByCategoryCollection;
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('currency', function ($expression) {
+            return "Rp. <?php echo number_format($expression, 0, ',', '.'); ?>";
+        });
+
         ListResource::withoutWrapping();
         ListCollection::withoutWrapping();
         ProductByCategoryResources::withoutWrapping();

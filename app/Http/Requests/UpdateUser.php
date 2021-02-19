@@ -31,9 +31,10 @@ class UpdateUser extends FormRequest
             'dob' => 'string|sometimes',
             'address' => 'string|sometimes',
             'hp' => 'string|sometimes',
+            'gender' => 'string|sometimes',
+            'city_id' => 'integer|sometimes',
             'email' => 'sometimes|max:255|email|string|unique:users,email,' . $this->user()->id,
-            'password' => 'confirmed|string|max:255|sometimes|min:8',
-            'image' => 'sometimes|mimes:jpeg,jpg,jfif,png|max:10000' //? 10000kb
+            'password' => 'string|max:255|sometimes|min:8'
         ];
     }
 }

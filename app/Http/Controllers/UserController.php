@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateImage;
 use App\Http\Requests\UpdateUser;
 use App\Http\Resources\UserResource;
 use App\Models\Image;
@@ -179,11 +180,11 @@ class UserController extends Controller
         return response()->successWithMessage("Success to Logout");
     }
 
-    public function userDetail(Request $request)
+    public function userDetail()
     {
-        return response()->successWithKey(new UserResource($request->user()), 'user');
+        return response()->successWithKey(new UserResource(Auth::user()), 'user');
     }
-    
+
     public function update(UpdateUser $request)
     {
         try {
@@ -191,23 +192,37 @@ class UserController extends Controller
         } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $th) {
             return response()->error('User is not found', StatusCode::NOT_FOUND);
         }
-
+        
+        $user->fill($request->validated());
+        $user->update();
+        return response()->successWithKey(new UserResource($user), 'user');
+    }
+    
+    public function updateAvatar(UpdateImage $request)
+    {
+        try {
+            $user = User::findOrFail($request->user()->id);
+        } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $th) {
+            return response()->error('User is not found', StatusCode::NOT_FOUND);
+        }
+        
         if($request->hasFile('image')) {
             $old_path = $user->image->path;
             Storage::disk('local')->delete("public/images/$old_path");
 
             $input = $request->validated();
-            $compressed_name = preg_replace('/\s+/', '_', $input['name']);
-            $final_name = time() . "_" . strtolower($compressed_name) . ".png";
+            $compressed_name = preg_replace('/\s+/', '_', $user->username);
+            $final_name = time() . "_" . strtolower($compressed_name) . ".webp";
             $folder = 'avatars';
             $path = $folder . "/" . $user->id . "/" . $final_name;
-            $image = ImageIn::make($request->file('image'))->encode('png', 75);
+            $image = ImageIn::make($request->file('image'))->encode('webp', 75)->resize(64, 64, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
             $user->image()->update(['path' => $path]);
             Storage::put("public/images/$path", $image);
         }
 
-        $user->fill($request->validated());
-        $user->update();
         return response()->successWithKey(new UserResource($user), 'user');
     }
 }

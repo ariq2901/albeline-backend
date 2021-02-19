@@ -22,8 +22,9 @@ class StoreController extends Controller
         $input = $request->validated();
         $input['city_id'] = (int) $input['city_id'];
         try {
-            $store = Store::create(array_merge($input, ['user_id' => $request->user()->id]));
-            // $store->user()->assignRole(['pembeli', 'penjual']);
+            Store::create(array_merge($input, ['user_id' => $request->user()->id]));
+            $user = User::findOrFail(Auth::user()->id);
+            $user->syncRoles(['pembeli', 'penjual']);
         } catch (\Throwable $th) {
             return response()->error('Failed to create Store', StatusCode::INTERNAL_SERVER_ERROR);
         }

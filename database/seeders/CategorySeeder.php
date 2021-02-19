@@ -17,12 +17,12 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert(
             [
                 [
-                    'name' => 'Mom and Baby', //^ 1
+                    'name' => 'Baby', //^ 1
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
-                    'name' => 'Care & Beauty', //^ 2
+                    'name' => 'Beauty', //^ 2
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -57,7 +57,7 @@ class CategorySeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'name' => 'Headsets', //^ 9
+                    'name' => 'Accessories', //^ 9
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],

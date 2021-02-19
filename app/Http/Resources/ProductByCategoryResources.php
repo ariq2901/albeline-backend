@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Review\ReviewResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductByCategoryResources extends JsonResource
@@ -18,16 +19,16 @@ class ProductByCategoryResources extends JsonResource
     {
         $images = ImageResource::collection($this->images->where('thumbnail', true));
         $categories = CategoryResource::collection($this->categories);
+        $reviews = ReviewResource::collection($this->reviews);
 
         return [
             'id' => $this->id,
             'name' => $this->name,
             'categories' => $categories,
-            'rating' => $this->rating,
+            'rate' => $reviews->avg('rate'),
             'images' => $images,
             'sold' => $this->sold,
-            'harga' => $this->harga,
-            'jumlah' => $this->jumlah,
+            'stock' => $this->stock,
         ];
     }
 }

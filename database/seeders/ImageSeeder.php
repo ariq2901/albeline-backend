@@ -401,7 +401,7 @@ class ImageSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'path' => 'categories/headset.png',
+                    'path' => 'categories/accessories.png',
                     'imageable_id' => '9',
                     'imageable_type' => 'App\Models\Category',
                     'thumbnail' => true,

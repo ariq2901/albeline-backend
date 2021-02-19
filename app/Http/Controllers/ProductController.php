@@ -18,7 +18,9 @@ use App\StatusCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as ImageIn;
 
 class ProductController extends Controller
 {
@@ -160,10 +162,23 @@ class ProductController extends Controller
         }
 
         $input = $imageProduct->validated();
+        $classifiedImg = $imageProduct->file('image');
         $compressed_product_name = preg_replace('/\s+/', '_', $product->name);
-        $final_name = time() . "_" . strtolower($compressed_product_name) . "." . $imageProduct->file('image')->getClientOriginalExtension();
+        $final_name = time() . "_" . strtolower($compressed_product_name);
         $path = "products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/" . strtolower($compressed_product_name);
-        $input['image']->storeAs("/images/$path", $final_name, 'public');
+        $folder_path = "storage/images/products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/";
+        // $input['image']->storeAs("/images/$path", $final_name, 'public');
+
+        if (!File::exists($folder_path)) {
+            mkdir("storage/images/products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/", 666, true);
+        }
+        
+        //? Meng-convert format file gambar menjadi .webp dan me-rescale file gambar, agar ringan & lebih cepat di-load
+        ImageIn::make($classifiedImg)->encode('webp', 80)->resize(570, 570, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(public_path('storage/images/' . $path . '.webp'));
+
         if($product->image === null) {
             $product->images()->create(['path' => $path."/".$final_name, 'thumbnail' => true]);
         } else {
@@ -172,4 +187,16 @@ class ProductController extends Controller
 
         return response()->successWithKey(new ListResource($product), 'product', StatusCode::CREATED);
     }
+
+    public function byCategory($id)
+	{
+		try {
+			$products = Category::findOrFail($id)->products()->paginate();
+		} catch(\Throwable $th) {
+			response()->error('Category not found');
+		}
+
+		$products = new ProductByCategoryCollection($products);
+		return response()->successWithKey($products, 'products');
+	}
 }

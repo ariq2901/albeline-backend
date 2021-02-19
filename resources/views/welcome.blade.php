@@ -259,6 +259,75 @@
                         </div>
                     </div>
                 </div>
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="border-biru">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" class="biru"/></svg>
+                                <div class="flex" style="width: 100%; justify-content: space-between">
+                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Update User</span></div>
+                                    {{-- <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: rgb(13, 208, 149)">All Role</span></div> --}}
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
+                                    POST
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    /api/user-update
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Headers</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Body</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { "name" : string, "username" : string, "profile" : string, "dob" : string, "address" : string, "hp" : string, "email" : string, "password" : string }</li><hr>
+                                        {{-- <span style="margin-top: 10px"><span class="salmon">*</span> untuk role ada 3 pilihan, "teacher" , "musyrif" & "student"</span><br> --}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="border-biru">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52"><circle id="postl" cx="26" cy="26" r="26" class="biru"/></svg>
+                                <div class="flex" style="width: 100%; justify-content: space-between">
+                                    <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Update User Image</span></div>
+                                    {{-- <div class="ml-4 text-lg leading-2 font-semibold"><span class="text-gray-900 dark:text-white">Role :</span> <span style="color: rgb(13, 208, 149)">All Role</span></div> --}}
+                                </div>
+                            </div>
+                            <div class="ml-12">
+                                <div class="mt-1 text-gray-600 dark:text-gray-400 font-semibold text-md">
+                                    POST
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    /api/update-avatar
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Headers</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">JSON:</span> { 'Authorization' : "Bearer {token}" }</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2 text-gray-600 dark:text-gray-400">
+                                    <span class="font-semibold">Body</span>
+                                    <ul style="margin: 0">
+                                        <li><span class="font-semibold" style="color: rgb(255, 23, 104)">Form Data:</span> "image": file</li><hr>
+                                        {{-- <span style="margin-top: 10px"><span class="salmon">*</span> untuk role ada 3 pilihan, "teacher" , "musyrif" & "student"</span><br> --}}
+                                        <span style="margin-top: 10px"><span class="salmon">*</span> tipe image yang disupport : <span class="text-gray-900 font-semibold dark:text-white">jpeg, jpg, jfif, png, webp.</span></span><br>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <h1 class="text-gray-900 font-semibold dark:text-white">Store</h1>
 

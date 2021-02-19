@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
     Route::get('/user-detail', 'App\Http\Controllers\UserController@userDetail');
     Route::get('/logout', 'App\Http\Controllers\UserController@logout');
     Route::post('/user-update', 'App\Http\Controllers\UserController@update');
+    Route::post('/update-avatar', 'App\Http\Controllers\UserController@updateAvatar');
 });
 
 //^ Store
@@ -72,4 +73,6 @@ Route::group(['middleware' => ['auth:api', 'CheckVerified']], function() {
     Route::get('/get-cart', 'App\Http\Controllers\BuyerController@getCart');
     Route::post('/update-cart', 'App\Http\Controllers\BuyerController@addCart');
     Route::post('/remove-cart', 'App\Http\Controllers\BuyerController@removeCart');
+
+    Route::post('/checkout', 'App\Http\Controllers\BuyerController@handleCheckout');
 });
