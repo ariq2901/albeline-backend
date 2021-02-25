@@ -33,6 +33,7 @@ class UpdateUser extends FormRequest
             'hp' => 'string|sometimes',
             'gender' => 'string|sometimes',
             'city_id' => 'integer|sometimes',
+            'city_name' => 'string|sometimes',
             'email' => 'sometimes|max:255|email|string|unique:users,email,' . $this->user()->id,
             'password' => 'string|max:255|sometimes|min:8'
         ];

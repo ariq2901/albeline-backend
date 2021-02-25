@@ -27,6 +27,7 @@ class UserResource extends JsonResource
             'address' => $this->address,
             'hp' => $this->hp,
             'city_id' => $this->city_id,
+            'city_name' => $this->city_name,
             'roles' => $this->getRoleNames(),
             'image' => new ImageResource($this->image)
         ];

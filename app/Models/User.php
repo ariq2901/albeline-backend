@@ -46,9 +46,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Store::class);
     }
 
-    public function checkouts()
+    public function orders()
     {
-        return $this->hasMany(Checkout::class);
+        return $this->hasMany(Order::class);
     }
 
     public function image()

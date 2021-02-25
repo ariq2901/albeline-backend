@@ -20,6 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/checkout-view', function () {
-    return view('checkout');
+    return view('checkout-test');
 });
 

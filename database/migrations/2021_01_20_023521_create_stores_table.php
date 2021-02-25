@@ -17,6 +17,7 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('city_id');
+            $table->string('city_name');
             $table->foreignId('user_id');
             $table->timestamps();
         });

@@ -164,25 +164,21 @@ class ProductController extends Controller
         $input = $imageProduct->validated();
         $classifiedImg = $imageProduct->file('image');
         $compressed_product_name = preg_replace('/\s+/', '_', $product->name);
-        $final_name = time() . "_" . strtolower($compressed_product_name);
-        $path = "products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/" . strtolower($compressed_product_name);
-        $folder_path = "storage/images/products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/";
+        $final_name = time() . "_" . strtolower($compressed_product_name) . ".webp";
+        $path = "products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/" . strtolower($compressed_product_name) . "/" . $final_name;
         // $input['image']->storeAs("/images/$path", $final_name, 'public');
-
-        if (!File::exists($folder_path)) {
-            mkdir("storage/images/products/" . strtolower(preg_replace('/\s+/', '_', $product->store->name)) . "/", 666, true);
-        }
         
         //? Meng-convert format file gambar menjadi .webp dan me-rescale file gambar, agar ringan & lebih cepat di-load
-        ImageIn::make($classifiedImg)->encode('webp', 80)->resize(570, 570, function ($constraint) {
+        $image = ImageIn::make($classifiedImg)->encode('webp', 80)->resize(570, 570, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
-        })->save(public_path('storage/images/' . $path . '.webp'));
+        });
 
+        Storage::put("public/images/$path", $image);
         if($product->image === null) {
-            $product->images()->create(['path' => $path."/".$final_name, 'thumbnail' => true]);
+            $product->images()->create(['path' => $path, 'thumbnail' => true]);
         } else {
-            $product->images()->create(['path' => $path."/".$final_name, 'thumbnail' => false]);
+            $product->images()->create(['path' => $path, 'thumbnail' => false]);
         }
 
         return response()->successWithKey(new ListResource($product), 'product', StatusCode::CREATED);

@@ -17,9 +17,6 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('product_id')->nullable();
-            $table->integer('product_price')->nullable();
-            $table->integer('product_amount')->default(1);
-            $table->boolean('checked_out')->default(false);
             $table->timestamps();
         });
     }

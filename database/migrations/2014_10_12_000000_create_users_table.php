@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('dob')->nullable();
             $table->longText('address')->nullable();
             $table->integer('city_id')->nullable();
+            $table->string('city_name')->nullable();
             $table->string('hp')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();

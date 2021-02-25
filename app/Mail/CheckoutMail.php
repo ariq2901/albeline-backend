@@ -31,10 +31,6 @@ class CheckoutMail extends Mailable
     public function build()
     {
         $data = $this->data;
-        foreach ($data['products'] as $product) {
-            dump($product, "dari mails");
-        }
-        die;
-        return $this->from('fakeghuroba@gmail.com')->view('checkout');
+        return $this->from('noreply@albeline.now.sh', 'Albeline')->subject('Invoice')->view('checkout')->with(["data" => $data]);
     }
 }

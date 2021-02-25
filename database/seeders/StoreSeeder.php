@@ -15,18 +15,7 @@ class StoreSeeder extends Seeder
      */
     public function run()
     {
-        // $store = DB::table('stores')->insert(
-        //     [
-        //         [
-        //             'name' => 'Albeline Official',
-        //             'city_id' => 154,
-        //             'user_id' => rand(1, 18),
-        //             'created_at' => now(),
-        //             'updated_at' => now(),
-        //         ],
-        //     ]
-        // );
-        $store = Store::create(["name" => 'Albeline Official', "city_id" => 154, "user_id" => rand(1, 18), "created_at" => now(), "updated_at" => now()]);
+        $store = Store::create(["name" => 'Albeline Official', "city_id" => 154, "city_name" => 'Jakarta Timur',"user_id" => rand(1, 18), "created_at" => now(), "updated_at" => now()]);
         
         try {
             $user = User::findOrFail($store->user_id);

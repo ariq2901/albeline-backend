@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTracksTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateTracksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tracks', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
             $table->foreignId('product_id');
+            $table->foreignId('user_id');
+            $table->integer('order_amount');
+            $table->integer('courier_cost');
+            $table->boolean('compacted_shipment'); //? Untuk 2 atau lebih jenis barang yang dikirim dari store yang sama
+            $table->bigInteger('total_product_price');
+            $table->integer('checkout_ke');
             $table->integer('status')->default(1);
             $table->timestamps();
         });
@@ -29,6 +34,6 @@ class CreateTracksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tracks');
+        Schema::dropIfExists('orders');
     }
 }

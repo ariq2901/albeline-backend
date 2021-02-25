@@ -157,7 +157,7 @@ class UserController extends Controller
             $user->assignRole('pembeli');
 
             //? Register Cart
-            $user->cart()->create(['user_id', $user->id]);
+            $user->cart()->create(['user_id' => $user->id]);
             
             //? Create Avatar Image
             $avatar = Avatar::create($user->username)->getImageObject()->encode('png');
@@ -170,10 +170,10 @@ class UserController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         try {
-            $request->user()->token()->revoke();
+            Auth::user()->token()->revoke();
         } catch(\Throwable $th) {
             return response()->error('Failed to logout', StatusCode::INTERNAL_SERVER_ERROR);
         }

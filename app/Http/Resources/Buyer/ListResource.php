@@ -22,7 +22,10 @@ class ListResource extends JsonResource
             'amount' => $this->amount,
             'image' => ImageResource::collection($this->images->where('thumbnail', true)),
             'price' => $this->price,
+            'heavy' => $this->heavy,
             'store' => $this->store->name,
+            'store_address' => $this->store->city_id,
+            'store_city_name' => $this->store->city_name,
         ];
     }
 }

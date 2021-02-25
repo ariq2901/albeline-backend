@@ -27,6 +27,7 @@ class ListResource extends JsonResource
             'name' => $this->name,
             'rate' => $reviews->avg('rate'),
             'images' => $images,
+            'weight' => $this->heavy,
             'sold' => $this->sold,
             'price' => $this->price,
             'quantity' => $this->qty,

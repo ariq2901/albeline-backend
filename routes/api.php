@@ -25,8 +25,13 @@ Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show');
 Route::post('/search/products', 'App\Http\Controllers\SearchController@search');
 Route::get('/category', 'App\Http\Controllers\CategoryController@index');
 Route::get('/category/{id}', 'App\Http\Controllers\ProductController@byCategory');
-Route::get('/image/{id}', 'App\Http\Controllers\ImageController@show');
-Route::get('/banners/{banner}', 'App\Http\Controllers\ImageController@banner');
+
+// Custom Rate Limiter by Throttle Middleware -> referensi: stackoverflow
+Route::middleware('throttle:1000, 1')->group(function() {
+    Route::get('/image/{id}', 'App\Http\Controllers\ImageController@show');
+    Route::get('/banners/{banner}', 'App\Http\Controllers\ImageController@banner');
+});
+
 
 Route::post('/register', 'App\Http\Controllers\UserController@register');
 Route::post('/login', 'App\Http\Controllers\UserController@login')->name('login');
@@ -69,10 +74,12 @@ Route::group(['middleware' => ['auth:api', 'role:admin']], function() {
 });
 
 //^ Buyer
-Route::group(['middleware' => ['auth:api', 'CheckVerified']], function() {
+Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
     Route::get('/get-cart', 'App\Http\Controllers\BuyerController@getCart');
     Route::post('/update-cart', 'App\Http\Controllers\BuyerController@addCart');
     Route::post('/remove-cart', 'App\Http\Controllers\BuyerController@removeCart');
 
-    Route::post('/checkout', 'App\Http\Controllers\BuyerController@handleCheckout');
+    Route::post('/order', 'App\Http\Controllers\BuyerController@makeOrder');
+
+    Route::get('/track/{status}', 'App\Http\Controllers\BuyerController@trackPackage');
 });
