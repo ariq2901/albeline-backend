@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OpenStore;
 use App\Http\Requests\UpdateStore;
 use App\Http\Resources\ListResource;
+use App\Http\Resources\OrderResource;
 use App\Http\Resources\Store\ListCollection;
 use App\Http\Resources\Store\ProductResource;
 use App\Http\Resources\Store\ReviewsResource;
 use App\Http\Resources\StoreResource;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Store;
 use App\Models\User;
 use App\StatusCode;
@@ -125,5 +128,24 @@ class StoreController extends Controller
             return response()->successWithMessage(true);
         }
         return response()->error(false, StatusCode::NOT_FOUND);
+    }
+
+    public function trackOrder($status)
+    {
+        $order = Order::where('store_id', Auth::user()->store->id)->where('status', $status)->get();
+        return response()->successWithKey(OrderResource::collection($order), 'packages');
+    }
+
+    public function handleOrder($id, $nextstatus) //? order id
+    {
+        $order = Order::where('id', $id)->first();
+
+        if ($order->store_id !== Auth::user()->store->id) {
+            return response()->error('You\'re not the store owner', StatusCode::UNAUTHORIZED);
+        }
+
+        Order::where('id', $id)->update(['status' => $nextstatus]);
+        
+        return response()->success('success update order\'s status');
     }
 }

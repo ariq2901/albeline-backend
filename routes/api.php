@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
     Route::get('/store-reviews', 'App\Http\Controllers\StoreController@getRating');
     Route::get('/check-store', 'App\Http\Controllers\StoreController@checkStore');
     Route::get('/store-products', 'App\Http\Controllers\StoreController@getProducts');
+
+    Route::get('/orders/{status}', 'App\Http\Controllers\StoreController@trackOrder');
+    Route::get('/accept-order/{id}/status/{nextstatus}', 'App\Http\Controllers\StoreController@handleOrder');
 });
 
 //^ Product

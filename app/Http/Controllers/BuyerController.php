@@ -154,13 +154,14 @@ class BuyerController extends Controller
             }
             
             foreach ($store->products as $product) {
+                $get_prod = Product::where('id', $product->id)->first();
+                $prod = Product::where('id', $product->id);
+                $prod->update(['stock' => ((int) $get_prod->stock - (int) $product->amount), 'sold' => ((int) $get_prod->sold + (int) $product->amount)]);
+                Cart::where('user_id', Auth::user()->id)->where('product_id', $product->id)->delete();
                 $order_input['product_id'] = $product->id;
                 $order_input['order_amount'] = $product->amount;
                 $order_input['total_product_price'] = ($product->price * $product->amount);
-                Cart::where('user_id', Auth::user()->id)->where('product_id', $product->id)->delete();
-                $prod = Product::where('id', $product->id);
-                $get_prod = Product::where('id', $product->id)->first();
-                $prod->update(['stock' => ((int) $get_prod->stock - (int) $product->amount), 'sold' => ((int) $get_prod->sold + (int) $product->amount)]);
+                $order_input['store_id'] = $get_prod->store->id;
                 $order = Order::create($order_input);
                 array_push($success_order, $order);
             }
