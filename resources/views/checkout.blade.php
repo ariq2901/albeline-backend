@@ -478,7 +478,7 @@
 <div align="center" class="img-container center fixedwidth fullwidthOnMobile" style="padding-right: 20px;padding-left: 20px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 20px;padding-left: 20px;" align="center"><![endif]-->
 <div style="font-size:1px;line-height:20px;"> </div>
-<div  style=" border-radius: 10px; overflow:hidden;" class="img-wrapper"><img align="center" alt="product" border="0" class="center fixedwidth fullwidthOnMobile" src="http://localhost:8000/api/image/{{ $product->image }}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 120px; display: block;" title="Blueberry Coffee Donut" width="120"/></div>
+<div  style=" border-radius: 10px; overflow:hidden;" class="img-wrapper"><img align="center" alt="product" border="0" class="center fixedwidth fullwidthOnMobile" src="https://albeline-backend.herokuapp.com/api/image/{{ $product->image }}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 120px; display: block;" title="Blueberry Coffee Donut" width="120"/></div>
 <div style="font-size:1px;line-height:20px"> </div>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
