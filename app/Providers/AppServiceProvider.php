@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         ResetPassword::createUrlUsing(function ($notifiable, $token) {
-            return "http://127.0.0.1:3000/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
+            return "https://albeline.vercel.app/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
         });
 
         ListResource::withoutWrapping();
