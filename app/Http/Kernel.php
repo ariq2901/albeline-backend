@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\Cors::class,
     ];
 
     /**
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_of_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'CheckVerified' => \App\Http\Middleware\CheckVerified::class,
+        'cors' => \App\Http\Middleware\Cors::class,
     ];
 }

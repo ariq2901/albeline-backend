@@ -7,6 +7,7 @@ use App\Http\Resources\ListCollection;
 use App\Http\Resources\ListResource;
 use App\Http\Resources\ProductByCategoryCollection;
 use App\Http\Resources\ProductByCategoryResources;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::directive('currency', function ($expression) {
             return "Rp. <?php echo number_format($expression, 0, ',', '.'); ?>";
+        });
+
+        ResetPassword::createUrlUsing(function ($notifiable, $token) {
+            return "http://127.0.0.1:3000/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
         });
 
         ListResource::withoutWrapping();

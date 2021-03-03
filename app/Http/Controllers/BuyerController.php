@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddCart;
+use App\Http\Requests\AddWishlist;
 use App\Http\Requests\checkoutRequest;
 use App\Http\Requests\makeOrderRequest;
 use App\Http\Requests\RemoveCart;
+use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\Buyer\CartCollection;
 use App\Http\Resources\Buyer\CartResource;
 use App\Http\Resources\Buyer\CheckoutCollection;
@@ -19,7 +21,9 @@ use App\Models\Checkout;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\Track;
+use App\Models\Wishlist;
 use App\StatusCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -189,5 +193,73 @@ class BuyerController extends Controller
     {
         $order = Order::where('user_id', Auth::user()->id)->where('status', $status)->get();
         return response()->successWithKey(OrderResource::collection($order), 'packages');
+    }
+
+    public function handleArrivedOrder($id) //? order id
+    {
+        $order = Order::where('id', $id)->first();
+
+        if ($order->user_id !== Auth::user()->id) {
+            return response()->error('You\'re not the order\'s buyer', StatusCode::UNAUTHORIZED);
+        }
+
+        Order::where('id', $id)->update(['status' => 4]);
+        
+        return response()->success('success update order\'s status');
+    }
+
+    public function addReview(ReviewRequest $request)
+    {
+        // $table->string('comment');
+        // $table->double('rate');
+        // $table->foreignId('user_id');
+        // $table->foreignId('product_id');
+
+        $input = $request->only(['rate', 'comment', 'product_id', 'order_id']);
+
+        if (Review::where('user_id', $request->user()->id)->where('order_id', $request->order_id)->exists()) {
+            return response()->error('You had been added a review on this order last time', StatusCode::UNPROCESSABLE_ENTITY);
+        }
+        
+        try {
+            Review::create(array_merge($input, ['user_id' => $request->user()->id]));
+        } catch (\Throwable $th) {
+            return response()->error('Failed to add review!', StatusCode::INTERNAL_SERVER_ERROR);
+        }
+        
+        return response()->successWithMessage('success adding review', StatusCode::CREATED);
+    }
+
+    public function getWishlist()
+    {
+        try {
+            $wishlists = Wishlist::where('user_id', Auth::user()->id)->get();
+        } catch (\Throwable $th) {
+            return response()->error('Wishlist not found', StatusCode::NOT_FOUND);
+        }
+
+        $list_product_id = [];
+        foreach ($wishlists as $wishlist) {
+            array_push($list_product_id, $wishlist->product_id);
+        }
+
+        $products = Product::whereIn('id', $list_product_id)->get();
+        
+        return response()->successWithKey(ListResource::collection($products), 'wishlists');
+    }
+    
+    public function addWishlist($id) //Product id
+    {
+        if (Wishlist::where('user_id', Auth::user()->id)->where('product_id', $id)->exists()) {
+            return response()->error('You had been added this product to your wishlist', StatusCode::UNPROCESSABLE_ENTITY);
+        }
+
+        try {
+            Wishlist::create(['product_id' => $id,'user_id' => Auth::user()->id]);
+        } catch (\Throwable $th) {
+            return response()->error('Failed to add wishlist!', StatusCode::INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->successWithMessage('success adding product to wishlist', StatusCode::CREATED);
     }
 }

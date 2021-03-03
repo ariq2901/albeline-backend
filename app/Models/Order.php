@@ -25,4 +25,9 @@ class Order extends Model
     {
         return $this->belongsTo(Store::class);
     }
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
+    }
 }

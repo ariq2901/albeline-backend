@@ -5,27 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Wishlist extends Model
 {
+    protected $table = 'wishlist';
     use HasFactory;
 
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class);
     }
-
-    public function order()
-    {
-        return $this->hasOne(Order::class);
-    }
-
 }

@@ -42,5 +42,10 @@ class Product extends Model
     {
         return $this->belongsTo(Cart::class);
     }
+
+    public function wishlist()
+    {
+        return $this->belongsTo(Wishlist::class);
+    }
     
 }

@@ -48,8 +48,12 @@ class ProductSearch
 		// }
 
 		if ($filters->has('price')) {
-			$product->where('price', '>=' , (int) $filters->input('price')['min'] ?? '');
-			$product->where('price', '<=' , (int) $filters->input('price')['max'] ?? '');
+			if (array_key_exists('min', $filters->input('price'))) {
+				$product->where('price', '>=' , (int) $filters->input('price')['min']);
+			}
+			if (array_key_exists('max', $filters->input('price'))) {
+				$product->where('price', '<=' , (int) $filters->input('price')['max']);
+			}
 		}
 
 		// if ($filters->has('rating')) {

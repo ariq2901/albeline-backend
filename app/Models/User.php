@@ -56,6 +56,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function wishlists()
+    {
+        return $this->hasOne(Wishlist::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

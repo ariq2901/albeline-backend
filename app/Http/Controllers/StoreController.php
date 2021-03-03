@@ -43,8 +43,20 @@ class StoreController extends Controller
         } catch (\Throwable $th) {
             return response()->error('Store is not found', StatusCode::NOT_FOUND);
         }
-
+        
         return response()->successWithKey(new StoreResource($store), 'store');
+    }
+    
+    public function getSellerStore($user_id)
+    {
+        try {
+            $user = User::findOrFail($user_id);
+            $store = $user->store;
+        } catch (\Throwable $th) {
+            return response()->error('Store is not found', StatusCode::NOT_FOUND);
+        }
+
+        return response()->success($store);
     }
 
     public function update(UpdateStore $request, $id)
@@ -144,7 +156,7 @@ class StoreController extends Controller
             return response()->error('You\'re not the store owner', StatusCode::UNAUTHORIZED);
         }
 
-        Order::where('id', $id)->update(['status' => $nextstatus]);
+        Order::where('id', $id)->update(['status' => (int) $nextstatus]);
         
         return response()->success('success update order\'s status');
     }
