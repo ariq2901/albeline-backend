@@ -19,7 +19,7 @@ class ProductSearch
 		if ($filters->has('name')) {
 			$name = $filters->input('name');
 
-			$product->where('name', 'like', "%$name%");
+			$product->where('name', 'ilike', "%$name%"); // For search 'like', postgres SQL query used 'ilike' - if you are using MySql, you must use 'like'
 		}
 
 		//^ Search by condition
