@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55de0d7ddebb93e13796583cad5eb062",
+    "content-hash": "5de80d97801837d5477037475f5d0536",
     "packages": [
         {
             "name": "ariqjusuf/proxyrajaongkir",
@@ -8602,7 +8602,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3",
+        "php": "~7.3.9",
         "ext-gd": "*"
     },
     "platform-dev": [],
