@@ -12,9 +12,6 @@ class RajaOngkirController extends Controller
     public function getKota()
     {
         $data = RajaOngkir::Kota()->all();
-
-        dd($data);
-
         return response()->json(["cities" => $data]);
     }
 
