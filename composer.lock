@@ -4,30 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3920af6e316852bc3d768de906636890",
+    "content-hash": "99d07f83b0a32762a559743e18af153d",
     "packages": [
         {
-            "name": "ariqjusuf/rajaongkirproxy",
-            "version": "dev-master",
+            "name": "ariqjusuf/proxyrajaongkir",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ariq2901/rajaongkirproxy.git",
-                "reference": "10ee30ac022b6254577273388a262f2b457e37ff"
+                "url": "https://github.com/ariq2901/proxyrajaongkir.git",
+                "reference": "eb0433a313de3fb2b08929fcf3bd7bd77e7f060e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ariq2901/rajaongkirproxy/zipball/10ee30ac022b6254577273388a262f2b457e37ff",
-                "reference": "10ee30ac022b6254577273388a262f2b457e37ff",
+                "url": "https://api.github.com/repos/ariq2901/proxyrajaongkir/zipball/eb0433a313de3fb2b08929fcf3bd7bd77e7f060e",
+                "reference": "eb0433a313de3fb2b08929fcf3bd7bd77e7f060e",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^8"
             },
-            "default-branch": true,
             "type": "package",
             "autoload": {
                 "psr-4": {
-                    "ariqjusuf\\rajaongkirproxy\\": "src/"
+                    "ariqjusuf\\proxyrajaongkir\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -47,10 +46,10 @@
                 "raja ongkir laravel 8"
             ],
             "support": {
-                "issues": "https://github.com/ariq2901/rajaongkirproxy/issues",
-                "source": "https://github.com/ariq2901/rajaongkirproxy/tree/master"
+                "issues": "https://github.com/ariq2901/proxyrajaongkir/issues",
+                "source": "https://github.com/ariq2901/proxyrajaongkir/tree/1.0.0"
             },
-            "time": "2021-03-20T03:10:47+00:00"
+            "time": "2021-03-20T09:43:35+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -8599,9 +8598,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "ariqjusuf/rajaongkirproxy": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -167,7 +167,7 @@ return [
          */
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        ariqjusuf\rajaongkirlaravel\RajaOngkirServiceProvider::class,
+        ariqjusuf\proxyrajaongkir\RajaOngkirServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,7 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'RajaOngkir' => ariqjusuf\rajaongkirlaravel\RajaOngkirFacade::class,
+        'RajaOngkir' => ariqjusuf\proxyrajaongkir\RajaOngkirFacade::class,
     ],
 
 ];
