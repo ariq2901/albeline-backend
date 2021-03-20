@@ -47,6 +47,7 @@ Route::post('/password/email', [ForgotPasswordAPIController::class, 'sendResetLi
 Route::get('/store/{id}', 'App\Http\Controllers\StoreController@show');
 
 //^ Raja Ongkir
+Route::middleware('cors')->get('/cities', 'App\Http\Controllers\RajaOngkirController@getKota');
 Route::middleware('cors')->get('/provinces', 'App\Http\Controllers\RajaOngkirController@getProvinces');
 Route::middleware('cors')->post('/cost', 'App\Http\Controllers\RajaOngkirController@getCost');
 
