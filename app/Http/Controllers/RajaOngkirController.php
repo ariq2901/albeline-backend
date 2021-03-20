@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CostRequest;
 use ariqjusuf\proxyrajaongkir\RajaOngkir;
+// use ariqjusuf\proxyrajaongkir\RajaOngkir;
 use Illuminate\Http\Request;
 
 class RajaOngkirController extends Controller
@@ -11,6 +12,8 @@ class RajaOngkirController extends Controller
     public function getKota()
     {
         $data = RajaOngkir::Kota()->all();
+
+        dd($data);
 
         return response()->json(["cities" => $data]);
     }
