@@ -117,7 +117,6 @@ class BuyerController extends Controller
         // if ($checkout) {
             // $this->checkoutMail(Auth::user()->email, $data);
         // }
-        //
     }
 
     public function checkoutMail($receiver, $data)
