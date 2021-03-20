@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CostRequest;
-use ariqjusuf\rajaongkirlaravel\RajaOngkir;
+use ariqjusuf\proxyrajaongkir\RajaOngkir;
 use Illuminate\Http\Request;
 
 class RajaOngkirController extends Controller
