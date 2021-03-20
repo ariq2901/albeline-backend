@@ -47,11 +47,8 @@ Route::post('/password/email', [ForgotPasswordAPIController::class, 'sendResetLi
 Route::get('/store/{id}', 'App\Http\Controllers\StoreController@show');
 
 //^ Raja Ongkir
-Route::middleware('cors')->group(function() {
-    Route::get('/cities', 'App\Http\Controllers\RajaOngkirController@getKota');
-    Route::get('/provinces', 'App\Http\Controllers\RajaOngkirController@getProvinces');
-    Route::post('/cost', 'App\Http\Controllers\RajaOngkirController@getCost');
-});
+Route::middleware('cors')->get('/provinces', 'App\Http\Controllers\RajaOngkirController@getProvinces');
+Route::middleware('cors')->post('/cost', 'App\Http\Controllers\RajaOngkirController@getCost');
 
 //^ Auth
 Route::group(['middleware' => 'auth:api', 'CheckVerified'], function() {
