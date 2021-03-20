@@ -19,7 +19,12 @@ class Cors
         // header('Access-Control-Allow-Origin:  http://localhost:3000');
         // header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
         // header('Access-Control-Allow-Methods:  GET, POST, PUT, DELETE');
-        return $next($request)->header('Access-Control-Allow-Origin', '*')
-                                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        $response = $next($request);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, X-Auth-Token, Application, Origin');
+
+        return $response;
+        // return $next($request)->header('Access-Control-Allow-Origin', '*')
+        //                         ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     }
 }
