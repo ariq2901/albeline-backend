@@ -43,6 +43,9 @@ class StoreController extends Controller
         } catch (\Throwable $th) {
             return response()->error('Store is not found', StatusCode::NOT_FOUND);
         }
+
+        $store['reviews'] = $this->getRating2($id);
+        $store['product_stats'] = $this->getProducts2($id);
         
         return response()->successWithKey(new StoreResource($store), 'store');
     }
@@ -109,6 +112,17 @@ class StoreController extends Controller
 
         return response()->successWithKey(new ProductResource($store));
     }
+    
+    public function getProducts2($store_id)
+    {
+        try {
+            $store = Store::findOrFail($store_id);
+        } catch(\Throwable $th) {
+            return 'Store not found';
+        }
+
+        return new ProductResource($store);
+    }
 
     public function getRating()
     {
@@ -132,6 +146,22 @@ class StoreController extends Controller
         }
 
         return response()->successWithKey(new ReviewsResource($reviews));
+    }
+
+    public function getRating2($store_id)
+    {
+        try {
+            $store = Store::with('Products.Reviews')->find($store_id);
+        } catch(\Throwable $th) {
+            return 'Store not found';
+        }
+
+        $reviews = [];
+        foreach ($store->products as $product) {
+            array_push($reviews, $product->reviews);
+        }
+
+        return new ReviewsResource($reviews);
     }
 
     public function checkStore()

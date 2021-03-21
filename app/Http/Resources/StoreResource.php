@@ -19,9 +19,11 @@ class StoreResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'city_id' => $this->city_id,
-            'cityname' => $this->cityname,
+            'city_name' => $this->city_name,
             'user' => new UserResource($this->user),
-            'products' => $products
+            'products' => $products,
+            'reviews'  => $this->reviews,
+            'product_stats'  => $this->product_stats
         ];
     }
 }
