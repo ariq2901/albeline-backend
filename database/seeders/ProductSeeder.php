@@ -530,7 +530,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'Iphone 12 PRO MAX 16/128',
-                'slug' => Str::slug('Iphone 12 PRO MAX 16/128', '-'),
+                'slug' => Str::slug('Iphone 12 PRO MAX 16 or 128', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 67,
@@ -556,7 +556,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'SONY MDR-ZX110AP On Ear Headphone / ZX110 / ZX-110AP / ZX110AP',
-                'slug' => Str::slug('SONY MDR-ZX110AP On Ear Headphone / ZX110 / ZX-110AP / ZX110AP', '-'),
+                'slug' => Str::slug('SONY MDR-ZX110AP On Ear Headphone or ZX110 or ZX-110AP or ZX110AP', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 21,

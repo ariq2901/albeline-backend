@@ -56,10 +56,13 @@ class ProductController extends Controller
     {
         $input = $request->validated();
         $input['store_id'] = $request->user()->store->id;
-        $input['slug'] = Str::slug($input['name'], '-');
+        $slug = str_replace('/', 'or', $input['name']);
+        $input['slug'] = Str::slug($slug, '-');
         $categories = $input['categories'];
         unset($input['categories']);
+
         $product = Product::create($input);
+
         foreach ($categories as $category_item) {
             DB::table('category_product')->insert([
                 'category_id' => $category_item,

@@ -34,7 +34,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         ResetPassword::createUrlUsing(function ($notifiable, $token) {
-            return "http://172.16.1.154/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
+            // return "http://172.16.1.154/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
+            return "http://localhost:3000/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
             // return "https://albeline.com/password/reset/{$token}/{$notifiable->getEmailForPasswordReset()}";
         });
 
