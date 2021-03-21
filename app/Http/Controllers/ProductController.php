@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as ImageIn;
 
 class ProductController extends Controller
@@ -55,6 +56,7 @@ class ProductController extends Controller
     {
         $input = $request->validated();
         $input['store_id'] = $request->user()->store->id;
+        $input['slug'] = Str::slug($input['name'], '-');
         $categories = $input['categories'];
         unset($input['categories']);
         $product = Product::create($input);
@@ -76,10 +78,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug, $id)
     {
         try {
-			$product = Product::findOrFail($id);
+			$product = Product::where('slug', $slug)->where('id', $id)->first();
 		} catch(\Throwable $th) {
 			return response()->error('Product not found', StatusCode::NOT_FOUND);
 		}

@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('upload-image', [ImageController::class, 'uploadDemo']);
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index');
-Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show');
+Route::get('/product/{slug}/id/{id}', 'App\Http\Controllers\ProductController@show');
 Route::post('/search/products', 'App\Http\Controllers\SearchController@search');
 Route::get('/category', 'App\Http\Controllers\CategoryController@index');
 Route::get('/category/{id}', 'App\Http\Controllers\ProductController@byCategory');

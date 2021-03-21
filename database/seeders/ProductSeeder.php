@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -462,6 +463,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'LG LN56 EASY SMART TV 32" - 3LN560BPTA',
+                'slug' => Str::slug('LG LN56 EASY SMART TV 32" - 3LN560BPTA', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 127,
@@ -486,6 +488,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'LEGO City Space undercover starter pack',
+                'slug' => Str::slug('LEGO City Space undercover starter pack', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 48,
@@ -501,6 +504,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'PS4 PRO 1TB CUH 7006B GARANSI SONY ASIA',
+                'slug' => Str::slug('PS4 PRO 1TB CUH 7006B GARANSI SONY ASIA', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 574,
@@ -513,6 +517,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'Adidas Alphabounce Instinc - White',
+                'slug' => Str::slug('Adidas Alphabounce Instinc - White', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 32,
@@ -525,6 +530,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'Iphone 12 PRO MAX 16/128',
+                'slug' => Str::slug('Iphone 12 PRO MAX 16/128', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 67,
@@ -537,6 +543,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'UNIQLO - PULLOVER SWEAT DRY HOODIE ULTRA STRETCH PJG',
+                'slug' => Str::slug('UNIQLO - PULLOVER SWEAT DRY HOODIE ULTRA STRETCH PJG', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 25,
@@ -549,6 +556,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'SONY MDR-ZX110AP On Ear Headphone / ZX110 / ZX-110AP / ZX110AP',
+                'slug' => Str::slug('SONY MDR-ZX110AP On Ear Headphone / ZX110 / ZX-110AP / ZX110AP', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 21,
@@ -561,6 +569,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'KONKA Oven Listrik pemanggang penghangat makanan',
+                'slug' => Str::slug('KONKA Oven Listrik pemanggang penghangat makanan', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 238,
@@ -573,6 +582,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'PAKET ISI 2 - Mujigae Jajangmyeon - Mie Saus Kedelai Hitam Korea 330gr',
+                'slug' => Str::slug('PAKET ISI 2 - Mujigae Jajangmyeon - Mie Saus Kedelai Hitam Korea 330gr', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 750,
@@ -590,6 +600,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'Bolu Kukus Mawar - Bakery',
+                'slug' => Str::slug('Bolu Kukus Mawar - Bakery', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 248,
@@ -602,6 +613,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'breathe win simmering minyak aromaterapi',
+                'slug' => Str::slug('breathe win simmering minyak aromaterapi', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 76,
@@ -614,6 +626,7 @@ class ProductSeeder extends Seeder
             [
                 'store_id' => 1,
                 'name' => 'COFFRET JAPAN Bed Sofa - Slim Edition',
+                'slug' => Str::slug('COFFRET JAPAN Bed Sofa - Slim Edition', '-'),
                 'condition' => true,
                 'heavy' => 1000,
                 'sold' => 2,
